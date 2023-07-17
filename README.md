@@ -1,5 +1,5 @@
+![image](https://github.com/Jucamhc/whatChat/assets/54044345/c379da5c-02d7-457f-9a0f-64b75ce388eb)
 
-![Alt text](image.png)
 
 # What-Chat
 
