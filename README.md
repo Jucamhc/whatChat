@@ -14,6 +14,7 @@
         1. # sudo apt update && sudo apt install ffmpeg
 
 // Node
-npm i fluent-ffmpeg
-npm i node-google-translate-skidz
-npm i qrcode-terminal
+
+    1. npm i fluent-ffmpeg
+    2. npm i node-google-translate-skidz
+    3. npm i qrcode-terminal
