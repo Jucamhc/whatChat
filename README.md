@@ -6,7 +6,9 @@
 La combinación de dos tecnologías que nos permite realizar consultas a través de WhatsApp, brindando la posibilidad de acceder a información en internet de manera rápida y sencilla, incluso para aquellos estudiantes o personas que no disponen de una conexión a internet de alta velocidad. Esto permite realizar consultas puntuales y obtener respuestas de forma conveniente.
 
 
-//Python
+## Python
+
+    Desde JavaScript, podemos ejecutar inteligencia artificial escrita en Python utilizando stdin.readline() para recibir datos desde la entrada estándar. Esto nos permite enviar información desde JavaScript a Python y luego procesarla en el código de inteligencia artificial. Podemos comunicarnos entre los dos lenguajes de programación estableciendo un flujo de datos bidireccional y aprovechando las fortalezas de cada uno para obtener resultados más potentes y precisos
 
     Windows
         1. Entono Virtual en la carperta /IA_whisper
@@ -21,7 +23,9 @@ La combinación de dos tecnologías que nos permite realizar consultas a través
         Instalar Linux ffmpeg
         1. # sudo apt update && sudo apt install ffmpeg
 
-// Node
+ ## Node
+
+    contamos con diferentes paquetes con solo npm install te permite instalar todos pero si requieres instalarlo de manera individual te dejo la lista.
 
     1. npm i fluent-ffmpeg
     2. npm i node-google-translate-skidz
