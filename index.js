@@ -5,8 +5,6 @@ const qrcode = require('qrcode-terminal');
 const { Client } = require('whatsapp-web.js');
 const client = new Client();
 const consultaBard = (...args) => import('./IA_bard/consultaBard.mjs').then(({ default: consultaBard }) => consultaBard(...args));
-const iaWhisper = (...args) => import('./IA_whisper/iaWhisper.js').then(({ default: audio_a_texto }) => audio_a_texto(...args));
-const { audio_a_texto } = require("./IA_whisper/iaWhisper");
 const { spawn } = require("child_process");
 
 
@@ -51,28 +49,41 @@ client.on('message', async (message) => {
     console.log(`Archivo de audio guardado en: ${filePath}`);
 
 
-    // Ejecutar la transcripción de audio y esperar la respuesta
     try {
+      client.sendMessage(message.from, "Inicia Procedo de Audio a Texto IA");
+      // Ejecutar la transcripción de audio y esperar la respuesta
       const texto = await audio_a_texto(fileName);
-      console.log("Texto transcribido:", texto);
-      let resp = await consultaBard(`${texto}`)
-      client.sendMessage(message.from, resp);
+      client.sendMessage(message.from, "Listo, Ahora Consultado Bard IA");
+      try {
+        // Ejecutar GOOGLE BARD
+        let resp = await consultaBard(`${texto}`);
+        client.sendMessage(message.from, resp);
+      } catch (error) {
+        console.error('Error al consultar a Bard:', error);
+        client.sendMessage(message.from, 'Se produjo un error al consultar a Bard');
+      }
 
     } catch (error) {
       console.error("Error:", error);
     }
 
   } else {
-    let resp = await consultaBard(`${message.body}`)
-    client.sendMessage(message.from, resp);
+
+    try {
+      let resp = await consultaBard(`${message.body}`)
+      client.sendMessage(message.from, resp);
+    } catch (error) {
+      console.error('Error al consultar a Bard:', error);
+      client.sendMessage(message.from, 'Se produjo un error al consultar a Bard. Por favor, intenta nuevamente más tarde.');
+    }
+
   }
 
 
 })
 
-
-
 client.initialize();
+
 
 audio_a_texto = async (nombreAudioOgg) => {
   return new Promise((resolve, reject) => {
@@ -84,6 +95,19 @@ audio_a_texto = async (nombreAudioOgg) => {
       .then((result) => {
         console.log(result);
         resolve(result);
+
+        fs.unlink(inputFilePath, (error) => {
+          if (error) {
+            console.error('Error al eliminar el archivo de entrada:', error);
+          }
+        });
+
+        fs.unlink(outputFilePath, (error) => {
+          if (error) {
+            console.error('Error al eliminar el archivo de salida:', error);
+          }
+        });
+
       })
       .catch((error) => reject(error.message));
   });
@@ -114,6 +138,7 @@ function audioText(nombreAudioOgg) {
       pythonProcess.stdout.on("end", function () {
         pythonResponse = pythonResponse.trim(); // Eliminar espacios al principio y al final
         resolveEnd();
+
       });
     });
 

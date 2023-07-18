@@ -1,7 +1,9 @@
-import Bard from "./cordBard-IA.mjs";
 
-let myConversation = new Bard.Chat(process.env.OPENAI_API_KEY);
-await Bard.init();
+import Bard from "bard-ai";
+
+await Bard.init("YwhzXbUdaNr-Bk2xVenjbe80vO2qJFOqMVw9VgmkRGtjiHFl54ldtMoY4eeWZTdOMTqOvA.");
+
+let myConversation = new Bard.Chat();
 
 async function consultaBard(pregu) {
 
@@ -11,5 +13,5 @@ async function consultaBard(pregu) {
 }
 
 //consultaBard("Ayudame haciendo mi carta de vacaciones")
-
 export default consultaBard;
+
