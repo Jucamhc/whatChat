@@ -2,3 +2,4 @@ node_modules
 IA_whisper/env/
 /.wwebjs_cache
 /.env
+.vscode

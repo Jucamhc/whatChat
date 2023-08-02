@@ -1,7 +1,7 @@
 
 import Bard from "bard-ai";
 
-await Bard.init("YwhzXbUdaNr-Bk2xVenjbe80vO2qJFOqMVw9VgmkRGtjiHFl54ldtMoY4eeWZTdOMTqOvA.");
+await Bard.init("ZAhjZAxC5W2MRoQux5GfZs1PEu3sNL8ldO29SFQTOTOhhIJl5znJ40-8eiXCOgbb9_mZDg.");
 
 let myConversation = new Bard.Chat();
 
@@ -12,6 +12,6 @@ async function consultaBard(pregu) {
     return respu;
 }
 
-//consultaBard("Ayudame haciendo mi carta de vacaciones")
+//consultaBard("ayudame a mejorar este texto, Utilizando Mi espacio Libre para aprebechar y renovarmi certificado #ccna #cisco #netacad")
 export default consultaBard;
 
