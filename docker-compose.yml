@@ -1,0 +1,10 @@
+version: '3'
+services:
+  node_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: npm start

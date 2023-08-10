@@ -2,10 +2,22 @@ const fs = require('fs');
 const path = require('path');
 const ffmpeg = require("fluent-ffmpeg");
 const qrcode = require('qrcode-terminal');
-const { Client } = require('whatsapp-web.js');
-const client = new Client();
+const { Client, LocalAuth } = require('whatsapp-web.js');
 const consultaBard = (...args) => import('./IA_bard/consultaBard.mjs').then(({ default: consultaBard }) => consultaBard(...args));
 const { spawn } = require("child_process");
+
+
+const client = new Client({
+  puppeteer: {
+    authStrategy: new LocalAuth(),
+    /* headless: false, */
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox'
+    ],
+    /* 'ignoreHTTPSErrors': true */
+  }
+});
 
 
 client.on('qr', qr => {
